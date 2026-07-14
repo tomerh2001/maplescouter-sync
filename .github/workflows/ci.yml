@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  server:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: server/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run build
+      - run: npm test
+
+  extension:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate manifest and referenced files
+        run: node .github/scripts/validate-extension.mjs
+      - name: Package extension
+        run: cd extension && zip -r ../maplescouter-cloud-presets.zip .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: extension-unpacked
+          path: maplescouter-cloud-presets.zip

@@ -1,0 +1,95 @@
+:root {
+  color-scheme: light dark;
+  --accent: #f59e0b;
+  --danger: #dc2626;
+  --border: color-mix(in srgb, currentColor 18%, transparent);
+  --muted: color-mix(in srgb, currentColor 55%, transparent);
+}
+
+body {
+  margin: 0;
+  font: 14px/1.5 system-ui, sans-serif;
+}
+
+main {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+}
+
+h1 {
+  font-size: 18px;
+}
+
+h2 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+label {
+  display: block;
+  margin: 12px 0;
+  font-weight: 600;
+}
+
+input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 4px;
+  padding: 8px 10px;
+  font: inherit;
+  font-weight: 400;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: transparent;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+  margin: 16px 0 4px;
+}
+
+button {
+  font: inherit;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: transparent;
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: var(--accent);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+#status {
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+#status.error {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.help ul {
+  padding-left: 18px;
+}
+
+.help li {
+  margin: 6px 0;
+}

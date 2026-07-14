@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "MapleScouter Cloud Presets",
+  "version": "0.1.0",
+  "description": "Save MapleScouter input presets to your own self-hosted server and import them on any machine.",
+  "minimum_chrome_version": "111",
+  "permissions": ["storage", "scripting"],
+  "host_permissions": [
+    "https://maplescouter.com/*",
+    "https://www.maplescouter.com/*"
+  ],
+  "optional_host_permissions": ["https://*/*", "http://*/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://maplescouter.com/*", "https://www.maplescouter.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "MapleScouter Cloud Presets",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
