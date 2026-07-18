@@ -31,7 +31,7 @@ jobs:
         run: node .github/scripts/validate-extension.mjs
       - name: Package extension
         run: cd extension && zip -r ../maplescouter-cloud-presets.zip .
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: extension-unpacked
           path: maplescouter-cloud-presets.zip
